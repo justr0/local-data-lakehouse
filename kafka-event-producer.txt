@@ -1,0 +1,3 @@
+docker run --name python-kafka-event-producer --env KAFKA_ADDRESS=localhost:9092 --env ASSIGNMENT_URL='https://raw.githubusercontent.com/rpfk/python-kafka-producer-assignment/rpfk-test-600/assignment.json' rpfk/python-kafka-producer
+
+python3 ./run.py --kafka-address='127.0.0.1:9092' --assignment-url='https://raw.githubusercontent.com/rpfk/python-kafka-producer-assignment/master/assignment.json'

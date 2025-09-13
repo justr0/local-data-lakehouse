@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+
+  - name: products
+    project: noble-district-469815-s9
+    dataset: landing
+    tables:
+      - name: products
+        identifier: products_*
+
+  - name: product_categories
+    project: noble-district-469815-s9
+    dataset: landing
+    tables:
+      - name: product_categories
+        identifier: product_categories_*
+
+  - name: product_subcategories
+    project: noble-district-469815-s9
+    dataset: landing
+    tables:
+      - name: product_subcategories
+        identifier: product_subcategories_*
+
+  - name: sales
+    project: noble-district-469815-s9
+    dataset: landing
+    tables:
+      - name: sales
+        identifier: sales_*
+
+  - name: territories
+    project: noble-district-469815-s9
+    dataset: landing
+    tables:
+      - name: territories
+        identifier: territories_*
