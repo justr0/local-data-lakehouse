@@ -84,9 +84,9 @@ services:
       CONNECT_STATUS_STORAGE_TOPIC: _connect_status
       CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
       CONNECT_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
-      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      CONNECT_KEY_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8086
       CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
-      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
+      CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8086
       CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
@@ -114,7 +114,7 @@ services:
       - schema-registry
     environment:
       - KAFKA_CLUSTERS_0_NAME=local #5
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-iceberg-1:29092
   
   schema-registry:
     image: confluentinc/cp-schema-registry
@@ -126,10 +126,10 @@ services:
       - kafka2
       - kafka3
     ports:
-      - "8081:8081"
+      - "8086:8081"
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka-iceberg-1:29092,PLAINTEXT://kafka-iceberg-2:29092,PLAINTEXT://kafka-iceberg-3:29092
       SCHEMA_REGISTRY_HOST_NAME: schema-registry-1
       SCHEMA_REGISTRY_DEBUG: "true"
-      SCHEMA_REGISTRY_LISTENERS: "http://schema-registry:8081"
+      SCHEMA_REGISTRY_LISTENERS: "http://schema-registry:8086"
       SCHEMA_REGISTRY_SCHEMA_COMPATIBILITY_LEVEL: "full_transitive"
