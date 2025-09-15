@@ -64,7 +64,7 @@ services:
 
   kafka-connect:
     build:
-      context: .
+      context: ./kafka-connect
     hostname: kafka-connect
     container_name: kafka-connect
     ports:
@@ -91,9 +91,19 @@ services:
       CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
+      CONNECT_LOG4J_LOGGERS: org.apache.iceberg=INFO,org.apache.kafka.connect.runtime.WorkerSinkTask=INFO
+
+      # These can also be used by Iceberg AWS S3FileIO
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: password
+      AWS_REGION: us-east-1
+
+      # (Optional) Lower commit interval for demo
+      JAVA_TOOL_OPTIONS: -Xms256m -Xmx1G
 
   kafka-connect-ui:
-    image: landoop/kafka-connect-ui
+    platform: "linux/amd64"
+    image: landoop/kafka-connect-ui:latest
     container_name: kafka-connect-ui
     depends_on:
       - kafka-connect

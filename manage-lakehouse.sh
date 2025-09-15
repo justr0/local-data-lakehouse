@@ -65,6 +65,7 @@ stop_services() {
     docker compose -f docker-compose-trino.yaml down -v
     docker compose -f docker-compose-lake.yaml down -v
     docker compose -f docker-compose-superset.yaml down -v
+    docker compose -f docker-compose-dremio.yaml down -v
     docker compose -f docker-compose-kafka-kraft-multi-connect-registry.yaml down -v
 
     echo "All services stopped"
