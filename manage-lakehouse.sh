@@ -23,7 +23,8 @@ start_services() {
     sleep 5
 
     #docker compose -f docker-compose-zk-kafka-schema-registry.yaml up -d
-    docker compose -f docker-compose-kafka-kraft.yaml up -d
+    #docker compose -f docker-compose-kafka-kraft.yaml up -d
+    docker compose -f docker-compose-kafka-kraft-multi-connect-registry.yaml up -d
     sleep 30
 
     echo "All services started"
@@ -64,7 +65,7 @@ stop_services() {
     docker compose -f docker-compose-trino.yaml down -v
     docker compose -f docker-compose-lake.yaml down -v
     docker compose -f docker-compose-superset.yaml down -v
-    docker compose -f docker-compose-kafka-kraft.yaml down -v
+    docker compose -f docker-compose-kafka-kraft-multi-connect-registry.yaml down -v
 
     echo "All services stopped"
 }
