@@ -29,8 +29,8 @@ start_services() {
 
     echo "All services started"
 
-    init_trino
-    load_superset_drivers
+    #init_trino
+    #load_superset_drivers
     #load_dbt_seed_data
 }
 
